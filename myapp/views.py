@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
+from django.http import HttpResponseRedirect, JsonResponse
 
-# Create your views here.
+
+def home(request):
+    return render(request, "home.html")
+
+def home_redirect(request):
+    return redirect("home")
