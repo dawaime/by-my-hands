@@ -18,25 +18,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
-      body {
+      .body_container {
         font-family: "Noto Kufi Arabic";
+        background-image: url("{% static 'imgs/wave-haikei.svg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      footer p, footer hr {
+        color: #fff;
+      }
+      .btn {
+        background-color: #90c750;
+        color: #000;
       }
     </style>
 
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <div class="body_container">
+      {% block content %}{% endblock %}
 
-    <div class="mx-3">
-      <hr>
-      <footer>
-          <div class="row">
-              <div class="col-md-6">
-                  <p class="text-normal">Copyright &copy; 2024 جميع الحقوق محفوظة لدى الفريق المشارك في معرض صنع بيدي</p>
-              </div>
-          </div>
-      </footer>
+      <div class="mx-3">
+        <footer>
+          <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-normal">Copyright &copy; 2024 جميع الحقوق محفوظة</p>
+                </div>
+            </div>
+        </footer>
+      </div>
     </div>
-
   </body>
 </html>

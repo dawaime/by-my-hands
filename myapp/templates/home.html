@@ -1,34 +1,47 @@
-{% extends "base.html" %} {% load static %} {% block title %}الصفحة الرئيسية{% endblock %} {% block content %}
-<div class="mb-5 mt-5">
-  <div class="container">
-    <h1 class="fw-bold mb-4">زوّار معرض صنع بيدي؛ أهلًا بكم في مسابقة "امسح واربح"</h1>
+{% extends "base.html" %} {% load static %} {% block title %}الصفحة الرئيسية{% endblock %}
+{% block head %}
+<style>
+  .card {
+    background-color: #fff;
+  }
+  .card h3, .card  h5, .card label {
+    color: #000;
+  }
+</style>
+{% endblock %} 
+{% block content %}
+<div class="pb-5 pt-5 background_container" style="height: 95vh;">
+  <div class="container card" style="max-width: 40rem;">
+    <div class="card-body">
+      <h3 class="fw-bold mb-4 card-title">زوّار معرض صنع بيدي؛ أهلًا بكم في مسابقة "امسح واربح"</h3>
+      <hr>
+      <h5 class="mb-3 mt-2">جاوب على السؤال بشكل صحيح لتدخل معنا في السحب على جائزة قيّمة: </h5>
 
-    <h5 class="fw-bold mb-5 mt-5">جاوب على السؤال بشكل صحيح لتدخل معنا في السحب على جائزة قيّمة: </h5>
-
-    <div class="mb-3 mt-5">
-      <form method="post" id="questions-form">
-        {% csrf_token %}
-        <div class="row row-cols-1">
-          <div class="col mb-3">
-            <label for="id_question1" class="form-label"
-              ><span class="fw-bold">السؤال:</span> يهتم معرض "صنع بيدي" بشكل خاص في دعم:</label
-            >
-            <select
-              name="question1"
-              class="form-select"
-              id="id_question1"
-              required
-            >
-              <option value selected>---------</option>
-              <option value="رواد الأعمال من فئة الطلاب والطالبات">رواد الأعمال الصغار من فئة الطلاب والطالبات</option>
-              <option value="رواد الأعمال بشكل عام">رواد الأعمال بشكل عام</option>
-            </select>
+      <div class="mb-3">
+        <form method="post" id="questions-form">
+          {% csrf_token %}
+          <div class="row row-cols-1">
+            <div class="col mb-3">
+              <label for="id_question1" class="form-label"
+                ><span class="fw-bold">السؤال:</span> يهتم معرض "صنع بيدي" بشكل خاص في دعم:</label
+              >
+              <select
+                name="question1"
+                class="form-select"
+                id="id_question1"
+                required
+              >
+                <option value selected>---------</option>
+                <option value="رواد الأعمال من فئة الطلاب والطالبات">رواد الأعمال الصغار من فئة الطلاب والطالبات</option>
+                <option value="رواد الأعمال بشكل عام">رواد الأعمال بشكل عام</option>
+              </select>
+            </div>
           </div>
-        </div>
-        
-        <button type="submit" class="w-100 btn btn-lg btn-success mt-3" id="submit-answer-btn">إرسال الإجابة</button>
-      </form>
-    </div> <!-- form container end line -->
+          
+          <button type="submit" class="w-100 btn btn-lg btn-success mt-3" id="submit-answer-btn">إرسال الإجابة</button>
+        </form>
+      </div> <!-- form container end line -->
+    </div>
 
   </div> <!-- container end line -->
 

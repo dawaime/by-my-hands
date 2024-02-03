@@ -1,12 +1,24 @@
-{% extends "base.html" %} {% load static %} {% block title %}لقد وقعت في الفخ{% endblock %} {% block content %}
-<div class="mb-5 mt-5">
-  <div class="container">
-    <h1 class="fw-bold mb-4">لقد وقعت في الفخ!</h1>
+{% extends "base.html" %} {% load static %} {% block title %}لقد وقعت في الفخ{% endblock %} 
+{% block head %}
+<style>
+  .card {
+    background-color: #fff;
+  }
+  .card h2, .card  h5, .card label {
+    color: #000;
+  }
+</style>
+{% endblock %} 
+{% block content %}
+<div class="pb-5 pt-5 background_container" style="height: 100vh;">
+  <div class="container card" style="max-width: 60rem;">
+    <div class="card-body">
+      <h2 class="fw-bold mb-4 text-danger">لقد وقعت في الفخ!</h2>
+      <hr>
+      <h5 class="mb-4 mt-2">في ظل تغلغل الرقمنة الذي نشهده في حياتنا، حماية بياناتك الشخصية مسؤوليتك، لا يحق لأي إعلان مثل: سحوبات الجوائز أن تطلب منك هويتك أو عنوان منزلك!</h5>
 
-    <h5 class="mb-5 mt-5">في ظل تغلغل الرقمنة الذي نشهده في حياتنا، حماية بياناتك الشخصية مسؤوليتك، لا يحق لأي إعلان مثل: سحوبات الجوائز أن تطلب منك هويتك أو عنوان منزلك!</h5>
-
-    <h5 class="fw-bold mb-5 mt-5">تعلّم الدرس وخلّك حريص.</h5>
-
+      <h5 class="fw-bold mb-3">تعلّم الدرس <u>وخلّك حريص.</u></h5>
+    </div>
   </div> <!-- container end line -->
 
 </div> <!-- container background end line -->
