@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect, JsonResponse
+from django.contrib.auth.decorators import login_required
 from .models import Visitors
 
 
@@ -49,3 +50,17 @@ def register_information(request):
 
 def result(request):
   return render(request, "result_page.html")
+
+
+@login_required(login_url="/admin/")
+def counters(request):
+  
+  visitor = Visitors.objects.get(pk=1)
+  visitor.global_click_counter_result
+
+  context = {
+    "register_counter": visitor.global_click_counter_register,
+    "result_counter": visitor.global_click_counter_result,
+  }
+   
+  return render(request, "counters.html", context)

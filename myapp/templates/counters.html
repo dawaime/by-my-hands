@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% load static %} {% block title %}تعداد{% endblock %} 
+{% block head %}
+<style>
+  .card {
+    background-color: #fff;
+  }
+  .card h2, .card  h5, .card label {
+    color: #000;
+  }
+</style>
+{% endblock %} 
+{% block content %}
+<div class="pb-5 pt-5 background_container" style="height: 100vh;">
+  <div class="container card" style="max-width: 60rem;">
+    <div class="card-body">
+      <h2 class="fw-bold mb-4 text-danger">التعداد</h2>
+      <hr>
+      <h5 class="fw-bold mb-3">عدد الذين وصلوا لصفحة تسجيل البيانات:</h5>
+      <p>{{ register_counter }}</p>
+      <h5 class="fw-bold mb-3">عدد الذين وصلوا لصفحة النتائج:</h5>
+      <p>{{ result_counter }}</p>
+    </div>
+  </div> <!-- container end line -->
+
+</div> <!-- container background end line -->
+{% endblock %}
