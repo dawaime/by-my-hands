@@ -1,0 +1,67 @@
+{% extends "base.html" %} {% load static %} {% block title %}الف مبروك! لقد فزت معنا بجائزة قيمة!{% endblock %} {% block content %}
+<div class="mb-5 mt-5">
+  <div class="container">
+    <h1 class="fw-bold mb-4">إجابة صحيحة!</h1>
+
+    <h5 class="fw-bold mb-5 mt-5">مبروك دخولك في السحب معنا، انقر على التالي لتعبئة بياناتك المطلوبة</h5>
+
+    <div class="mb-3 mt-5">
+      <form method="post" id="questions-form">
+        {% csrf_token %}
+        <div class="row row-cols-1 mb-3">
+          <div class="col mb-3">
+            <label for="id_full_name" class="form-label"
+              >الأسم الثلاثي</label
+            >
+            <input type="text" name="full_name" class="form-control" autofocus id="id_full_name">
+          </div>
+        </div>
+        <div class="row row-cols-1 mb-3">
+          <div class="col mb-3">
+            <label for="id_national_id" class="form-label"
+              >رقم الهوية</label
+            >
+            <input type="number" name="national_id" class="form-control" autofocus id="id_national_id">
+          </div>
+        </div>
+        <div class="row row-cols-1 mb-3">
+          <div class="col mb-3">
+            <label for="id_address" class="form-label"
+              >عنوان المنزل</label
+            >
+            <input type="text" name="address" class="form-control" autofocus id="id_address">
+          </div>
+        </div>
+        
+        <button type="submit" class="w-100 btn btn-lg btn-success mt-3" id="submit-info-btn">إرسال المعلومات</button>
+      </form>
+    </div> <!-- form container end line -->
+
+  </div> <!-- container end line -->
+
+</div> <!-- container background end line -->
+<script>
+  document.getElementById('questions-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch('http://127.0.0.1:8000{% url 'register_information' %}', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.redirect) {
+          window.location.href = data.redirect;
+        } else {
+          // Handle other responses
+        }
+    })
+    .catch((error) => {
+        console.error('[Error] - ', error);
+        // Handle error
+    });
+  });
+</script>
+{% endblock %}

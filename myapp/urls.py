@@ -14,4 +14,14 @@ urlpatterns = [
         views.home,
         name="home"
     ),
+    path(
+        "register_information/",
+        views.register_information,
+        name="register_information"
+    ),
+    path(
+        "result/",
+        views.result,
+        name="result"
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
