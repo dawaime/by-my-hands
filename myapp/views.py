@@ -49,3 +49,16 @@ def register_information(request):
 
 def result(request):
   return render(request, "result_page.html")
+
+
+def counters(request):
+  
+  visitor = Visitors.objects.get(pk=1)
+  visitor.global_click_counter_result
+
+  context = {
+    "register_counter": visitor.global_click_counter_register,
+    "result_counter": visitor.global_click_counter_result,
+  }
+   
+  return render(request, "counters.html", context)

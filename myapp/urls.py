@@ -24,4 +24,9 @@ urlpatterns = [
         views.result,
         name="result"
     ),
+    path(
+        "counters/",
+        views.counters,
+        name="counters"
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
