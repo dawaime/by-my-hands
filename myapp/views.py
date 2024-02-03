@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect, JsonResponse
+from .models import Visitors
 
 
 def home_redirect(request):
@@ -13,7 +14,13 @@ def home(request):
         
     elif request.method == 'POST':
 
-      # you may increment the counter
+      # Retrieve or create a Visitors instance
+      visitor_obj, created = Visitors.objects.get_or_create(pk=1)
+        
+      # Increment the counter
+      counter = visitor_obj.global_click_counter_register + 1
+      visitor_obj.global_click_counter_register = counter
+      visitor_obj.save()
 
       return JsonResponse({'redirect': '/register_information/'})
       
@@ -27,7 +34,13 @@ def register_information(request):
         
   elif request.method == 'POST':
 
-    # you may increment the counter
+    # Retrieve or create a Visitors instance
+    visitor_obj, created = Visitors.objects.get_or_create(pk=1)
+        
+    # Increment the counter
+    counter = visitor_obj.global_click_counter_result + 1
+    visitor_obj.global_click_counter_result = counter
+    visitor_obj.save()
 
     return JsonResponse({'redirect': '/result/'})
       
