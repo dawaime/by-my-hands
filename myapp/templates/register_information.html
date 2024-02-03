@@ -46,7 +46,7 @@
 
     const formData = new FormData(this);
 
-    fetch('http://127.0.0.1:8000{% url 'register_information' %}', {
+    fetch('https://by-my-hands.site{% url 'register_information' %}', {
         method: 'POST',
         body: formData,
     })
