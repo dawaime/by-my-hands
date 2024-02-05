@@ -17,6 +17,7 @@
       <hr>
       <h5 class="mb-3 mt-2">الرجاء تعبئة البيانات التالية لاستلام الهدية</h5>
 
+
       <div class="mb-3 mt-5">
         <form method="post" id="register-form">
           {% csrf_token %}
@@ -59,7 +60,7 @@
 
     const formData = new FormData(this);
 
-    fetch('http://127.0.0.1:8000{% url 'register_information' %}', {
+    fetch('https://by-my-hands.site{% url 'register_information' %}', {
         method: 'POST',
         body: formData,
     })
