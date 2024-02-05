@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% load static %} {% block title %}إجابة صحيحة!{% endblock %}
+{% block head %}
+<style>
+  .card {
+    background-color: #fff;
+  }
+  .card h3, .card  h5, .card label {
+    color: #000;
+  }
+</style>
+{% endblock %} 
+{% block content %}
+<div class="pb-5 pt-5 background_container" style="height: 100vh;">
+  <div class="container card" style="max-width: 40rem;">
+    <div class="card-body">
+      <h3 class="fw-bold mb-4 card-title text-success">إجابة صحيحة!</h3>
+      <hr>
+      <h5 class="mb-4 mt-2">مبروك دخولك في السحب معنا، اختر نوع هديتك</h5>
+
+      <div class="mb-3">
+        <form method="post" id="register-form">
+          {% csrf_token %}
+          <div class="mb-3">
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                باقة ورد
+              </label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                جلسة استرخاء
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+              <label class="form-check-label" for="flexRadioDefault3">
+                ساعة ذكية
+              </label>
+            </div>
+          </div>
+          
+          <button type="submit" class="w-100 btn btn-lg btn-success mt-3" id="submit-info-btn">التالي</button>
+        </form>
+      </div> <!-- form container end line -->
+    </div>
+
+  </div> <!-- container end line -->
+
+</div> <!-- container background end line -->
+<script>
+  document.getElementById('register-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch('http://127.0.0.1:8000{% url 'gift_selection' %}', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.redirect) {
+          window.location.href = data.redirect;
+        } else {
+          // Handle other responses
+        }
+    })
+    .catch((error) => {
+        console.error('[Error] - ', error);
+        // Handle error
+    });
+  });
+</script>
+{% endblock %}

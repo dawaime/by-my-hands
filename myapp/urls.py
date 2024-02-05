@@ -15,6 +15,11 @@ urlpatterns = [
         name="home"
     ),
     path(
+        "gift_selection/",
+        views.gift_selection,
+        name="gift_selection"
+    ),
+    path(
         "register_information/",
         views.register_information,
         name="register_information"
