@@ -19,13 +19,33 @@ def home(request):
       visitor_obj, created = Visitors.objects.get_or_create(pk=1)
         
       # Increment the counter
-      counter = visitor_obj.global_click_counter_register + 1
-      visitor_obj.global_click_counter_register = counter
+      counter = visitor_obj.global_click_counter_gift + 1
+      visitor_obj.global_click_counter_gift = counter
       visitor_obj.save()
 
-      return JsonResponse({'redirect': '/register_information/'})
+      return JsonResponse({'redirect': '/gift_selection/'})
       
     return render(request, "home.html")
+
+
+def gift_selection(request):
+    
+  if request.method == 'GET':
+    return render(request, "gift_selection.html")
+        
+  elif request.method == 'POST':
+
+    # Retrieve or create a Visitors instance
+    visitor_obj, created = Visitors.objects.get_or_create(pk=1)
+        
+    # Increment the counter
+    counter = visitor_obj.global_click_counter_register + 1
+    visitor_obj.global_click_counter_register = counter
+    visitor_obj.save()
+
+    return JsonResponse({'redirect': '/register_information/'})
+      
+  return render(request, "gift_selection.html")
 
 
 def register_information(request):
@@ -59,6 +79,7 @@ def counters(request):
   visitor.global_click_counter_result
 
   context = {
+    "gift_counter": visitor.global_click_counter_gift,
     "register_counter": visitor.global_click_counter_register,
     "result_counter": visitor.global_click_counter_result,
   }
